@@ -1,30 +1,36 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {NotificationService} from '../../services/notification.service';
+import {RouterLink} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [RouterLink],
   standalone: true,
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent implements OnInit, OnDestroy {
 
+  private readonly notificationService = inject(NotificationService);
+
   notificationCount: number = 5;
 
-  notificationService = inject(NotificationService);
+  private allNotificationSubscription!: Subscription;
+  private singleNotificationSubscription!: Subscription;
 
   ngOnInit(): void {
-    this.notificationService.allNotificationCount$.subscribe((count) => {
+    this.allNotificationSubscription = this.notificationService.allNotificationCount$.subscribe((count) => {
       this.notificationCount = count;
-    })
+    });
 
-    this.notificationService.singleNotificationCount$.subscribe(() => {
+    this.singleNotificationSubscription = this.notificationService.singleNotificationCount$.subscribe(() => {
       this.notificationCount--;
     })
   }
 
   ngOnDestroy() {
-    console.log('I am destroyed');
+    this.allNotificationSubscription.unsubscribe();
+    this.singleNotificationSubscription.unsubscribe();
   }
 }

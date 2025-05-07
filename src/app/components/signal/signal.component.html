@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>Club</th>
+    <th>Adversaire</th>
+  </tr>
+  <tr>
+    <td>{{ club() }}</td>
+    <td>{{ adversaire() }}</td>
+  </tr>
+</table>
+
+<button (click)="changeClub()" style="margin-top: 10px">Change club</button>
+
+
+<h2>a = {{ a() }}</h2>
+<button (click)="incA()">Increment A</button>
+<h2>b = {{ b() }}</h2>
+<button (click)="incB()">Increment B</button>
+
+<h1>sum = {{ sum() }}</h1>

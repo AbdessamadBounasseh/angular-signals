@@ -1,13 +1,17 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Injectable, signal} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
-  allNotificationCount$ = new Subject<number>();
+  notificationCount$ = signal<number>(5);
 
-  singleNotificationCount$ = new Subject<void>();
+  readOneNotification() {
+    this.notificationCount$.update(oldValue => {
+      if (oldValue <= 0) return 0;
+      return oldValue - 1;
+    });
+  }
 
 }

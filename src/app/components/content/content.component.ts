@@ -14,12 +14,7 @@ export class ContentComponent {
 
   private readonly notificationService = inject(NotificationService);
 
-  markAllAsRead() {
-    this.notificationService.allNotificationCount$.next(0);
+  markAsRead() {
+    this.notificationService.readOneNotification();
   }
-
-  markSingleAsRead() {
-    this.notificationService.singleNotificationCount$.next();
-  }
-
 }

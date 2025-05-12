@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-popup',
@@ -10,8 +10,10 @@ export class PopupComponent {
 
   @Input() isOpen!: boolean;
 
-  requestClosePopup() {
+  @Output() needToClose = new EventEmitter<boolean>(false);
 
+  requestClosePopup() {
+    this.needToClose.emit(true);
   }
 
 }

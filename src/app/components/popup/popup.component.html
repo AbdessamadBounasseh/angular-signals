@@ -1,0 +1,10 @@
+@if (isOpen) {
+  <div class="custom-popup-backdrop">
+    <div class="custom-popup">
+      <button class="close-btn" (click)="requestClosePopup()">×</button>
+      <h2>Bienvenue !</h2>
+      <p>Ceci est un popup sympa avec du style 😃</p>
+      <button class="action-btn" (click)="requestClosePopup()">Fermer</button>
+    </div>
+  </div>
+}

@@ -9,4 +9,12 @@
     Marquer le dernier comme lu
   </button>
 
+  <br><br>
+
+  <button (click)="openPopup()">
+    Ouvrir le popup
+  </button>
+
 </main>
+
+<app-popup [isOpen]="isOpen"></app-popup>

@@ -1,0 +1,9 @@
+<div class="results-container">
+  <h2 class="results-title">Produits Apple</h2>
+
+  <div class="results-grid">
+    @for (productName of results(); track productName) {
+      <app-search-card [product]="productName"></app-search-card>
+    }
+  </div>
+</div>

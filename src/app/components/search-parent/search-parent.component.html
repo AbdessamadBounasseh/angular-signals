@@ -1,0 +1,18 @@
+<div class="search-container">
+  <h1 class="app-title">Apple Store Search</h1>
+
+  <div class="search-input-wrapper">
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path fill="none" stroke="currentColor" stroke-width="2" d="M15 15l6 6m-11-4a7 7 0 110-14 7 7 0 010 14z"/>
+    </svg>
+    <input type="text" class="search-input" placeholder="Rechercher..." #searchInput
+           (input)="onKeywordChange(searchInput.value)">
+  </div>
+
+  <div class="selected-item-container">
+    <h3 class="selected-item-label">Objet sélectionné:</h3>
+    <p class="selected-item-value"></p>
+  </div>
+
+  <app-search-results [toFilterBy]="keyword"></app-search-results>
+</div>

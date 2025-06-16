@@ -3,8 +3,13 @@ import {Routes} from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'parent',
+    redirectTo: 'search',
     pathMatch: 'full',
+  },
+  {
+    path: 'search',
+    loadComponent: () =>
+      import('./components/search-parent/search-parent.component').then(c => c.SearchParentComponent),
   },
   {
     path: 'signal',
